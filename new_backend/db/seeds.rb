@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Practitioner.destroy_all
 User.destroy_all
+UserPractitioner.destroy_all
 
 pract1 = Practitioner.create(name: "Laura Luna, LICSW", specialties: ["Cultural Identity", "Family Conflict", "Parenting"], about: "I am an experienced therapist who works with children, adolescents, adults and couples. I provide treatment for a variety of issues, including: depression, anxiety, relationship issues, life transitions, and trauma. Through the use of evidence-based interventions including, Cognitive Behavioral Therapy, Emotionally Focused Therapy and play therapy techniques I help client identify their triggers, and learn healthier ways to manage their emotions and deal with life stressors.
 I believe in focusing on the unique strengths that each individual possesses and how those strengths can help them in overcoming their challenges. I also believe that the therapeutic relationship between therapist and client is an important factor in the success of therapy and strive to create a safe and understanding therapeutic environment.
@@ -45,4 +46,4 @@ I specialize in working with adolescents and adults. As I use a cultural lens in
 
 user1 = User.create(name: "Edward Cullin", email: "his@email.com")
 
-UserPractitioner.create(user_id: user1.id, practitioner_id: pract1.id, reviews: ["good job", "Dr gave me all the information with knowledgeable response and precaution I need to take for future safety."], likes: 1)
+UserPractitioner.create(user_id: user1.id, practitioner_id: pract1.id, reviews: "Dr gave me all the information with knowledgeable response and precaution I need to take for future safety.", likes: 1)
