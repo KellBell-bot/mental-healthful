@@ -3,7 +3,7 @@ class CreateUserPractitioners < ActiveRecord::Migration[6.0]
     create_table :user_practitioners do |t|
       t.references :user, null: false, foreign_key: true
       t.references :practitioner, null: false, foreign_key: true
-      t.text :review
+      t.text :reviews
       t.integer :likes
 
       t.timestamps
