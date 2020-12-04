@@ -1,16 +1,17 @@
 
-const urlPract = "http://localhost:3000/practitioners"
+const url = "http://localhost:3000/practitioners"
 
 const urlUser = "http://localhost:3000/user"
 
-
+let main = document.querySelector("#main")
 
 document.addEventListener("DOMContentLoaded", ()=> {
     getPract()
+    document.querySelector('form').addEventListener('submit', createUser)
  })
 
 function getPract(){
-fetch(urlPract)
+fetch(url)
     .then(resp => resp.json())
     .then(practArray => practArray.forEach(practitioner => renderP(practitioner)))
 }
@@ -60,7 +61,7 @@ function showPract(event, practitioner){
     // console.log(event.target.dataset.id);
     
     document.querySelector("#main").innerHTML = ""
-    fetch(`${urlPract}/${event.target.dataset.id}`)
+    fetch(`${url}/${event.target.dataset.id}`)
     .then(res => res.json())
     .then(renderP)
     
@@ -84,3 +85,12 @@ function showPract(event, practitioner){
 
     
 }
+// const url = "http://localhost:3000/practitioners"
+// let main = document.querySelector("#main")
+
+
+// document.addEventListener("DOMContentLoaded", ()=> {
+
+//     document.querySelector('form').addEventListener('submit', createUser)
+//  })
+
