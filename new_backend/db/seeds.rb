@@ -45,5 +45,8 @@ You have more strength than you realize and your resiliency has brought you far.
 I specialize in working with adolescents and adults. As I use a cultural lens in my work, I welcome communities of color, LGBTQ individuals and those who have felt marginalized. Let's get started!", zip_code: 20006, image:"https://cdn4.sussexdirectories.com/rms/rms_photos/sized/94/86/738694-1908430-3_320x400.jpg?pu=1596142584", languages: ["English"])
 
 user1 = User.create(name: "Edward Cullin", email: "his@email.com")
+user2 = User.create(name: "Juan Perez", email: "this@email.com")
 
 UserPractitioner.create(user_id: user1.id, practitioner_id: pract1.id, reviews: "Dr gave me all the information with knowledgeable response and precaution I need to take for future safety.", likes: 1)
+
+UserPractitioner.create(user_id: user2.id, practitioner_id: pract1.id, reviews: "Altamente recomendada", likes: 1)
