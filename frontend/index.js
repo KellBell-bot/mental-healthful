@@ -3,7 +3,7 @@ const url = "http://localhost:3000/practitioners"
 
 const urlUser = "http://localhost:3000/user"
 
-let main = document.querySelector("#main")
+const main = document.querySelector("#main")
 
 document.addEventListener("DOMContentLoaded", ()=> {
     getPract()
