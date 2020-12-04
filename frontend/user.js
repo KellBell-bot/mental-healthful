@@ -1,7 +1,8 @@
 const userURL= "http://localhost:3000/users"
 
 document.addEventListener('DOMContentLoaded', () => {
-    let signForm = document.querySelector('form')
+    loginForm()
+    // let signForm = document.querySelector('form')
     let signUpBtn = document.querySelector('#signUpBtn')
 
 
@@ -11,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
          
         formSection.innerHTML=  
 
-        `   <input type="text" placeholder="Name" name="name">
+        `   <h3>Sign Up</h3>
+            <input type="text" placeholder="Name" name="name">
              <input type="text" placeholder="Email" name="email">
              <button type="submit" class="ui button" name="submit">Submit</button>`
 
@@ -19,11 +21,50 @@ document.addEventListener('DOMContentLoaded', () => {
     
 })
 
+function loginForm(){
+
+    let loginBtn= document.querySelector('#loginBtn')
+
+    loginBtn.addEventListener('click', () => {
+        let formSection= document.querySelector('form')
+       
+         
+        formSection.innerHTML=  
+
+        `  <h3>Login</h3>
+             <input type="text" placeholder="Email" name="email">
+             <button type="submit" class="ui button" name="submit">Submit</button>`
+
+    })
+
+}
+
+function createLogin(event, ){
+    event.preventDefault()
+
+    let userInfo= {
+        email: event.target.email.value
+    }
+    //comapre email.value to all users using User.find
+    //
+
+    fetch('http://localhost:3000/login', {
+        
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            
+            body: JSON.stringify(userInfo)
+        }).then(response => response.json())
+        .then(data => data)
+        document.querySelector('form').innerHTML= ""  
+}
 
 
 
-
-function createUser(event, userData) {
+function createUser(event) {
     event.preventDefault()
     
     let newUser= {
