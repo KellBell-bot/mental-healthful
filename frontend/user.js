@@ -1,7 +1,25 @@
 const userURL= "http://localhost:3000/users"
 
-function createUser(event, userData) {
+document.addEventListener('DOMContentLoaded', () => {
     let signForm = document.querySelector('form')
+    let signUpBtn = document.querySelector('#signUpBtn')
+
+    
+    signUpBtn.addEventListener('click', () => {
+        if (signForm.style.display === "none") {
+            signForm.style.display = "inline";
+        }else {
+            signForm.style.display = "none"
+        }
+    })
+    
+})
+
+
+
+
+
+function createUser(event, userData) {
     event.preventDefault()
 
     let newUser= {
