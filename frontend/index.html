@@ -6,8 +6,8 @@
     <title>HealthFul</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <link rel="stylesheet" href="style.css">
-    <script defer src="index.js"></script>
-    <script defer src="user.js"></script>
+    <script src="user.js"></script>
+    <script src="index.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <!--Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@300&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
                 <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
                 <li class="nav-item"><a href="" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="" class="nav-link">Login</a></li>
-                <li class="nav-item"><a href="" class="nav-link">Sign Up</a></li>
+                <li id="signUpBtn" class="nav-item"><a href="#" class="nav-link">Sign Up</a></li>
                 <li class="nav-item"><a href="" class="nav-link">Logout</a></li>
               </ul>
              </div>
@@ -54,12 +54,9 @@
   
    </header>
    <main id="main">
-    <div>
-      <form class="ui form">
-        <h3>Sign Up</h3>
-        <input type="text" placeholder="Name" name="name">
-        <input type="text" placeholder="Email" name="email">
-        <input class="ui button" type="submit">
+    <div id="formSection">
+      <form class="ui form" >
+        
       </form>
     </div>
    </main> 
