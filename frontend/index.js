@@ -23,12 +23,27 @@ function renderP(practitioner){
     card.id = practitioner.id
 
     let allUsers = practitioner.user_practitioners
+
     function likesCounter(totalLikes, user) {
         return totalLikes + user.likes;
     }
 
     function commentCounter(totalComents, user) {
-        return totalComents + user.reviews.length
+        let nComments = 0
+        if (user.reviews.length > 0){
+            nComments += 1
+           
+            return totalComents + nComments
+        }
+        // function incrementValue()
+        // {
+        //     var value = parseInt(document.getElementById('number').value, 10);
+        //     value = isNaN(value) ? 0 : value;
+        //     value++;
+        //     document.getElementById('number').value = value;
+        // }
+        // onclick to hearts??
+        
     }
 
     card.innerHTML = `
@@ -40,7 +55,7 @@ function renderP(practitioner){
                 </div>
                 <div class="content">
                     <span class="right floated">
-                    <i class="heart outline like icon"></i>
+                    <i class="heart outline like icon" ></i>
                         ${allUsers.reduce(likesCounter, 0)}
                     </span>
                     <i class="comment icon"></i>
@@ -60,7 +75,7 @@ function showPract(event, practitioner){
     .then(res => res.json())
     .then(renderP)
 
-    console.log(renderP());
+    // console.log(renderP(card));
 
     let reviewSegment = document.createElement('div')
     reviewSegment.className = "ui secondary segment"
@@ -121,6 +136,8 @@ function showPract(event, practitioner){
         event.preventDefault();
         postReview(event, commentsForm, reviewDiv)
     })
+
+
 
 }
 
