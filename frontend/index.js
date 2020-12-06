@@ -28,13 +28,13 @@ function renderP(practitioner){
         return totalLikes + pract.likes;
     }
 
-    // function commentCounter(totalComents, pract) {
-    //     let nComments = 0
-    //     if (pract.reviews.length > 0){
-    //         nComments += 1
+    function commentCounter(totalComents, pract) {
+        let nComments = 0
+        if (pract.reviews.length > 0){
+            nComments += 1
            
-    //         return totalComents + nComments
-    //     }
+            return totalComents + nComments
+        }
         // function incrementValue()
         // {
         //     var value = parseInt(document.getElementById('number').value, 10);
@@ -44,8 +44,8 @@ function renderP(practitioner){
         // }
         // onclick to hearts??
         
-    // }
-    // ${allUsers.reduce(commentCounter, 0)}
+     }
+    
 
     card.innerHTML = `
             <div class="content">
@@ -60,6 +60,7 @@ function renderP(practitioner){
                         ${allUsers.reduce(likesCounter, 0)}
                     </span>
                     <i class="comment icon"></i>
+                        ${allUsers.reduce(commentCounter, 0)}
                 </div>
             `
         
@@ -164,11 +165,11 @@ function postReview(event, commentsForm, reviewDiv){
     let newReview= {
         user_id: +userId.dataset.userId,
         practitioner_id: +practitionerId,
-        reviews: "newReviewText.toString()",
+        reviews: newReviewText,
         likes: 0
     }
 
-    console.log(li.innerText);
+    console.log();
     
     fetch(urlUP, {
         method: "POST",
