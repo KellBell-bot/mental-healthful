@@ -46,6 +46,6 @@ class UserPractitionersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_practitioner_params
-      params.require(:user_practitioner).permit(:user_id, :practitioner_id, :review, :likes)
+      params.require(:user_practitioner).permit(:user_id, :practitioner_id, :reviews, :likes)
     end
 end
