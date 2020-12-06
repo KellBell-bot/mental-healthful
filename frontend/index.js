@@ -1,6 +1,6 @@
 
 const url = "http://localhost:3000/practitioners"
-
+const urlUP = "http://localhost:3000/user_practitioners"
 const urlUser = "http://localhost:3000/user"
 
 const main = document.querySelector("#main")
@@ -24,17 +24,17 @@ function renderP(practitioner){
 
     let allUsers = practitioner.user_practitioners
 
-    function likesCounter(totalLikes, user) {
-        return totalLikes + user.likes;
+    function likesCounter(totalLikes, pract) {
+        return totalLikes + pract.likes;
     }
 
-    function commentCounter(totalComents, user) {
-        let nComments = 0
-        if (user.reviews.length > 0){
-            nComments += 1
+    // function commentCounter(totalComents, pract) {
+    //     let nComments = 0
+    //     if (pract.reviews.length > 0){
+    //         nComments += 1
            
-            return totalComents + nComments
-        }
+    //         return totalComents + nComments
+    //     }
         // function incrementValue()
         // {
         //     var value = parseInt(document.getElementById('number').value, 10);
@@ -44,7 +44,8 @@ function renderP(practitioner){
         // }
         // onclick to hearts??
         
-    }
+    // }
+    // ${allUsers.reduce(commentCounter, 0)}
 
     card.innerHTML = `
             <div class="content">
@@ -59,12 +60,13 @@ function renderP(practitioner){
                         ${allUsers.reduce(likesCounter, 0)}
                     </span>
                     <i class="comment icon"></i>
-                    ${allUsers.reduce(commentCounter, 0)}
                 </div>
             `
         
-   card.querySelector(".header").addEventListener("click", () => {
+    card.querySelector(".header").addEventListener("click", () => {
        showPract(event, practitioner)})
+
+   
 }
 
 function showPract(event, practitioner){
@@ -75,7 +77,9 @@ function showPract(event, practitioner){
     .then(res => res.json())
     .then(renderP)
 
-    // console.log(renderP(card));
+    // console.log(event.target.dataset);
+
+    
 
     let reviewSegment = document.createElement('div')
     reviewSegment.className = "ui secondary segment"
@@ -143,16 +147,40 @@ function showPract(event, practitioner){
 
 function postReview(event, commentsForm, reviewDiv){
     event.preventDefault();
-    let id = commentsForm.id
+    let practitionerId = commentsForm.id
 
+
+    let userId = document.getElementById("userDiv")
+    
+    let newReviewText = commentsForm.review.value
+    
     let li = document.createElement('li')
     li.innerText = commentsForm.review.value
     reviewDiv.appendChild(li)
-    // console.log(event, commentsForm.review.value, id, reviewDiv);
-
-
+    console.log(newReviewText);
+    commentsForm.reset();
     
-    commentsForm.reset()
+   
+    let newReview= {
+        user_id: +userId.dataset.userId,
+        practitioner_id: +practitionerId,
+        reviews: "newReviewText.toString()",
+        likes: 0
+    }
+
+    console.log(li.innerText);
+    
+    fetch(urlUP, {
+        method: "POST",
+        headers:{
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        
+        body: JSON.stringify(newReview)
+    }).then(response => response.json())
+    .then(newdata => console.log(newdata)) 
+
 
 }
 

@@ -25,9 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function createUser(event, userData) {
     event.preventDefault()
-    
+    let name = event.target.name.value
+    document.getElementById("userDiv").innerText = name
+    let user = document.getElementById("userDiv")
+    // userId.dataset
     let newUser= {
-        name: event.target.name.value,
+        name: name,
         email: event.target.email.value
     }
     
@@ -40,7 +43,11 @@ function createUser(event, userData) {
         
         body: JSON.stringify(newUser)
     }).then(response => response.json())
-    .then(data => data)
+    .then(data => { 
+        data,
+        user.dataset.userId = data.id
+        
+    })
     
     document.querySelector('form').innerHTML= ""
 }
