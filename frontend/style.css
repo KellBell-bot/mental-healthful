@@ -8,10 +8,11 @@ body {
 
 main {
     display: grid;
-    grid-template-columns: 1fr;
+    position: relative;
+    grid-template-columns: 1fr auto;
     grid-template-rows: auto;
     grid-gap: 20px;
-    padding: 50px;
+    padding: 50px 100px 50px 100px;
    
 }
   .title{

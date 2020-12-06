@@ -23,12 +23,27 @@ function renderP(practitioner){
     card.id = practitioner.id
 
     let allUsers = practitioner.user_practitioners
+
     function likesCounter(totalLikes, user) {
         return totalLikes + user.likes;
     }
 
     function commentCounter(totalComents, user) {
-        return totalComents + user.reviews.length
+        let nComments = 0
+        if (user.reviews.length > 0){
+            nComments += 1
+           
+            return totalComents + nComments
+        }
+        // function incrementValue()
+        // {
+        //     var value = parseInt(document.getElementById('number').value, 10);
+        //     value = isNaN(value) ? 0 : value;
+        //     value++;
+        //     document.getElementById('number').value = value;
+        // }
+        // onclick to hearts??
+        
     }
 
     card.innerHTML = `
@@ -40,18 +55,13 @@ function renderP(practitioner){
                 </div>
                 <div class="content">
                     <span class="right floated">
-                    <i class="heart outline like icon"></i>
+                    <i class="heart outline like icon" ></i>
                         ${allUsers.reduce(likesCounter, 0)}
                     </span>
                     <i class="comment icon"></i>
                     ${allUsers.reduce(commentCounter, 0)}
                 </div>
-            <div class="extra content">
-            <div class="ui large transparent left icon input">
-                <i class="heart outline icon"></i>
-                <input type="text" placeholder="Add Reviews...">
-            </div>
-            </div>`
+            `
         
    card.querySelector(".header").addEventListener("click", () => {
        showPract(event, practitioner)})
@@ -59,11 +69,43 @@ function renderP(practitioner){
 
 function showPract(event, practitioner){
     // console.log(event.target.dataset.id);
-    
     document.querySelector("#main").innerHTML = ""
+    
     fetch(`${url}/${event.target.dataset.id}`)
     .then(res => res.json())
     .then(renderP)
+
+    // console.log(renderP(card));
+
+    let reviewSegment = document.createElement('div')
+    reviewSegment.className = "ui secondary segment"
+    reviewSegment.innerText = "Reviews: "
+    
+    let reviewDiv = document.createElement('ul')
+    let array = practitioner.user_practitioners.map(function(up) {
+        
+        return up.reviews}).forEach(review => { 
+            reviewDiv.innerHTML += `<li>${review}</li>`
+        })
+
+    let commentsForm = document.createElement('form')
+    commentsForm.className = "content"
+    commentsForm.id = practitioner.id
+    
+    let placeHolder = document.createElement('div')
+    placeHolder.className = "ui large transparent left icon input"
+    let inputForm = document.createElement('input')
+    inputForm.type ="text"
+    inputForm.name ="review"
+    inputForm.id ="review-input"
+    inputForm.placeholder= "Add Review..."
+    // inputForm.value = ""
+    let button = document.createElement('button')
+    button.className = "ui primary button"
+    button.id = "submit"
+    button.innerText = "submit a review"
+   
+
     
     let segment = document.createElement('div')
     segment.className = "ui raised segment"
@@ -73,24 +115,45 @@ function showPract(event, practitioner){
     specialtiesTitle.innerText = 'Specialties:'
     let specialties = document.createElement('li')
     practitioner.specialties.forEach(specialty => {
-        specialties.innerHTML += `<li>${specialty}</li>`})
+    specialties.innerHTML += `<li>${specialty}</li>`})
     let languages = document.createElement('p')
     languages.innerText = `Languages Spoken: ${practitioner.languages}`
     let zipCode = document.createElement('p')
     zipCode.innerText = `Zip Code: ${practitioner.zip_code}`
-
+        
+    
+    
+    placeHolder.append(inputForm)
+    commentsForm.append(placeHolder, button)
+    
+    reviewSegment.append(reviewDiv, commentsForm)
+    
     specialtiesTitle.append(specialties)
     segment.append(about, specialtiesTitle, languages, zipCode)
-    main.appendChild(segment)
+    main.append(segment, reviewSegment)
+
+    commentsForm.addEventListener("submit", function(event){
+        event.preventDefault();
+        postReview(event, commentsForm, reviewDiv)
+    })
+
+
+
+}
+
+function postReview(event, commentsForm, reviewDiv){
+    event.preventDefault();
+    let id = commentsForm.id
+
+    let li = document.createElement('li')
+    li.innerText = commentsForm.review.value
+    reviewDiv.appendChild(li)
+    // console.log(event, commentsForm.review.value, id, reviewDiv);
+
 
     
+    commentsForm.reset()
+
 }
-// const url = "http://localhost:3000/practitioners"
-// let main = document.querySelector("#main")
 
-
-// document.addEventListener("DOMContentLoaded", ()=> {
-
-//     document.querySelector('form').addEventListener('submit', createUser)
-//  })
 

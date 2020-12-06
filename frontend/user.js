@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     signUpBtn.addEventListener('click', () => {
-        let formSection= document.querySelector('form')
+        let formSection= document.querySelector('.form')
        
          
         formSection.innerHTML=  
