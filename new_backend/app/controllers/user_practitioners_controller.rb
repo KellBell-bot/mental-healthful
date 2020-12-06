@@ -15,7 +15,7 @@ class UserPractitionersController < ApplicationController
 
   # POST /user_practitioners
   def create
-    @user_practitioner = UserPractitioner.new(user_practitioner_params)
+    @user_practitioner = UserPractitioner.find_or_initialize_by(user_practitioner_params)
 
     if @user_practitioner.save
       render json: @user_practitioner, status: :created, location: @user_practitioner
