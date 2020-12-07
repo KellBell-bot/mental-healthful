@@ -8,7 +8,10 @@ const main = document.querySelector("#main")
 document.addEventListener("DOMContentLoaded", ()=> {
     getPract()
     document.querySelector('form').addEventListener('submit', createUser)
-    document.querySelector('form').addEventListener('submit', createLogin)
+    // document.querySelector('form').addEventListener('submit', createLogin)
+    document.querySelector('#aboutBtn').addEventListener('click', (event) => {
+        renderAbout(event)
+    })
  })
 
 function getPract(){

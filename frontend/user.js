@@ -1,7 +1,7 @@
 const userURL= "http://localhost:3000/users"
 
 document.addEventListener('DOMContentLoaded', () => {
-    loginForm()
+    // loginForm()
     // let signForm = document.querySelector('form')
     let signUpBtn = document.querySelector('#signUpBtn')
 
@@ -21,46 +21,46 @@ document.addEventListener('DOMContentLoaded', () => {
     
 })
 
-function loginForm(){
+// function loginForm(){
 
-    let loginBtn= document.querySelector('#loginBtn')
+//     let loginBtn= document.querySelector('#loginBtn')
 
-    loginBtn.addEventListener('click', () => {
-        let formSection= document.querySelector('.form')
+//     loginBtn.addEventListener('click', () => {
+//         let formSection= document.querySelector('.form')
        
          
-        formSection.innerHTML=  
+//         formSection.innerHTML=  
 
-        `  <h3>Login</h3>
-             <input type="text" placeholder="Email" name="email">
-             <button type="submit" class="ui button" name="submit">Submit</button>`
+//         `  <h3>Login</h3>
+//              <input type="text" placeholder="Email" name="email">
+//              <button type="submit" class="ui button" name="submit">Submit</button>`
 
-    })
+//     })
 
-}
+// }
 
-function createLogin(event){
-    event.preventDefault()
+// function createLogin(event){
+//     event.preventDefault()
 
-    let userInfo= {
-        email: event.target.email
-    }
+//     let userInfo= {
+//         email: event.target.email
+//     }
     
     
-    fetch('http://localhost:3000/login', {
+//     fetch('http://localhost:3000/login', {
         
-        method: "POST",
-        headers:{
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
+//         method: "POST",
+//         headers:{
+//             "Content-Type": "application/json",
+//             "Accept": "application/json"
+//         },
         
-        body: JSON.stringify(userInfo)
-    }).then(response => response.json())
-    .then(data => data)
-    document.querySelector('form').innerHTML= ""  
-    console.log("you're user email is"+ `${userInfo.email}`)
-    }
+//         body: JSON.stringify(userInfo)
+//     }).then(response => response.json())
+//     .then(data => data)
+//     document.querySelector('form').innerHTML= ""  
+//     console.log("you're user email is"+ `${userInfo.email}`)
+//     }
     
     
     
