@@ -3,6 +3,8 @@ body {
     padding: 0;
     list-style: none;
     background-image: url('https://i.imgur.com/rkwgCqf.jpg');
+    background-repeat: repeat-y;
+    background-size: cover;
 }
 
 
@@ -16,6 +18,13 @@ main {
    
 }
 
+.welcome{
+    text-align: center;
+    font-family: 'Sansita Swashed', cursive;
+    font-size: 35px;
+    color: rgb(83, 38, 24);
+}
+
 .userName{
   text-align: left;
   font-family: 'Sansita Swashed', bold;
@@ -23,20 +32,46 @@ main {
 
 }
 .title{
-      font-size: 45px;
-      text-align: center;
-      font-family: 'Sansita Swashed', cursive;
+    font-size: 45px;
+    text-align: center;
+    color: rgb(83, 38, 24);
+    font-family: 'Sansita Swashed', cursive;
       
 }
+
+
+#cardName{ 
+    color: rgb(83, 38, 24);
+}
+
+#nameText{
+    color: rgb(83, 38, 24);
+    font-size: 20px;
+}
+
+#segmentText{
+    color: rgb(83, 38, 24);
+}
+
+#reviewText{
+    color: rgb(83, 38, 24);
+}
+
+#reviewList{
+    color: rgb(83, 38, 24);
+}
+
 
 .navbar {
     font-size: 1.15rem;
     font-weight: 600;
+    color: rgb(83, 38, 24);
     letter-spacing: .1rem;
     box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .2);
     z-index: 1;
     
 }
+
 
 .nav-item {
     padding: .5rem;

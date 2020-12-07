@@ -7,9 +7,6 @@ const main = document.querySelector("#main")
 
 document.addEventListener("DOMContentLoaded", ()=> {
     getPract()
-    document.querySelector('form').addEventListener('submit', createUser)
-
-  
 
     // document.querySelector('form').addEventListener('submit', createLogin)
     document.querySelector('#aboutBtn').addEventListener('click', (event) => {
@@ -57,7 +54,7 @@ function renderP(practitioner){
 
     card.innerHTML = `
             <div class="content">
-            <a data-id=${practitioner.id} class="header">${practitioner.name}</a>
+            <a id="cardName" data-id=${practitioner.id} class="header">${practitioner.name}</a>
             </div>
             <div class="image">
                 <img src = "${practitioner.image}">
@@ -90,6 +87,7 @@ function showPract(event, practitioner){
 
     let name = document.createElement('div')
     name.className = "centered"
+    name.id="nameText"
     name.innerText = practitioner.name
 
     let img = document.createElement('img')
@@ -112,9 +110,11 @@ function showPract(event, practitioner){
     
     let reviewSegment = document.createElement('div')
     reviewSegment.className = "ui secondary segment"
+    reviewSegment.id="reviewText"
     reviewSegment.innerText = "Reviews: "
     
     let reviewDiv = document.createElement('ul')
+    reviewDiv.id="reviewList"
     let array = practitioner.user_practitioners.map(function(userReview) {
         
         return userReview.reviews}).forEach(review => { 
@@ -142,6 +142,7 @@ function showPract(event, practitioner){
     
     let segment = document.createElement('div')
     segment.className = "ui raised segment"
+    segment.id="segmentText"
     // segment.style.width = "650px"
     let about = document.createElement('p')
     about.innerText = practitioner.about

@@ -13,21 +13,21 @@ function renderAbout(event){
           <div class="content">
             <div class="header">Mauro Dorigo</div>
             <div class="meta">
-              <a>Flatiron Student</a>
+            <a href="https://github.com/purisquiri" target="https://github.com/purisquiri">Flatiron Student</a>
             </div>
             <div class="description">
-              Mauro is a former cheese maker and almost graduate of Flatiron School.
+            Mauro is a former cheese maker and almost graduate of Flatiron School.
             </div>
-          </div>
-        </div>
-        <div class="card">
+            </div>
+            </div>
+            <div class="card">
           <div class="image">
             <img src="https://i.imgur.com/llGLOYo.jpg" height= '200px'>
           </div>
           <div class="content">
             <div class="header">Kellie Hamilton</div>
             <div class="meta">
-              <span class="date">Flatiron Student</span>
+              <a href="https://github.com/KellBell-bot" target="blank">Flatiron Student</a>
             </div>
             <div class="description">
               Kellie loves cheese and wine and is also an almost graduate of Flatiron School.
