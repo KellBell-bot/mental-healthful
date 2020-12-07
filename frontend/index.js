@@ -8,7 +8,14 @@ const main = document.querySelector("#main")
 document.addEventListener("DOMContentLoaded", ()=> {
     getPract()
     document.querySelector('form').addEventListener('submit', createUser)
+
   
+
+    // document.querySelector('form').addEventListener('submit', createLogin)
+    document.querySelector('#aboutBtn').addEventListener('click', (event) => {
+        renderAbout(event)
+    })
+
  })
 
 function getPract(){
@@ -68,7 +75,7 @@ function renderP(practitioner){
             </div>
             `
         
-    card.querySelector(".header").addEventListener("click", () => {
+    card.querySelector(".header").addEventListener("click", (event) => {
        showPract(event, practitioner)})
 
    
