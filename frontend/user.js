@@ -6,22 +6,36 @@ document.addEventListener('DOMContentLoaded', () => {
     let signUpBtn = document.querySelector('#signUpBtn')
 
 
-    signUpBtn.addEventListener('click', () => {
-        let formSection= document.querySelector('.form')
-       
-         
-        formSection.innerHTML=  
-
-        `   <h3>Sign Up</h3>
-            <input type="text" placeholder="Name" name="name">
-             <input type="text" placeholder="Email" name="email">
-             <button type="submit" class="ui button" name="submit">Submit</button>`
-
+    signUpBtn.addEventListener('click', (event) => {
+        renderForm(event)
+        
     })
-    
+
+   
 })
 
-// function loginForm(){
+function renderForm(event){
+    document.querySelector('main').innerHTML = ""
+
+    let form= document.createElement('form')
+        form.className="ui form"
+    
+     
+    form.innerHTML=  
+    
+    `   <h3>Sign Up</h3>
+        <input type="text" placeholder="Name" name="name">
+         <input type="text" placeholder="Email" name="email">
+         <button type="submit" class="ui button" name="submit">Submit</button>`
+
+         document.querySelector('#main').appendChild(form)
+
+         document.querySelector('form').addEventListener('submit', (event) =>{
+            createUser(event)
+         })
+}
+
+
 
 //     let loginBtn= document.querySelector('#loginBtn')
 
@@ -87,8 +101,10 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => { 
             data,
             user.dataset.userId = data.id
+            getPract()
             
         })
         
-        document.querySelector('form').innerHTML= ""
+        document.querySelector('form').innerHTML= `<h3 class="welcome">Welcome!</h3>
+                    <img class="ui circular image" src="https://i.imgur.com/eiJ32tN.jpg" width= "750px">`
     }
