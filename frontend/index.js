@@ -8,10 +8,14 @@ const main = document.querySelector("#main")
 document.addEventListener("DOMContentLoaded", ()=> {
     getPract()
     document.querySelector('form').addEventListener('submit', createUser)
+
+  
+
     // document.querySelector('form').addEventListener('submit', createLogin)
     document.querySelector('#aboutBtn').addEventListener('click', (event) => {
         renderAbout(event)
     })
+
  })
 
 function getPract(){
@@ -55,17 +59,20 @@ function renderP(practitioner){
             <div class="content">
             <a data-id=${practitioner.id} class="header">${practitioner.name}</a>
             </div>
-                <div class="image">
-                    <img src = "${practitioner.image}">
-                </div>
-                <div class="content">
-                    <span class="right floated">
-                    <i class="heart outline like icon" ></i>
+            <div class="image">
+                <img src = "${practitioner.image}">
+            </div>
+            <div class="content">
+                <span class="right floated" id="likes">
+                    <i class="heart outline like icon" id="heart" ></i>
                         ${allUsers.reduce(likesCounter, 0)}
-                    </span>
-                    <i class="comment icon"></i>
+                </span>
+                <i class="comment icon"></i>
                         ${allUsers.reduce(commentCounter, 0)}
-                </div>
+            </div>
+            <div class="extra content" >
+                Specialties: ${practitioner.specialties}
+            </div>
             `
         
     card.querySelector(".header").addEventListener("click", (event) => {
@@ -78,22 +85,39 @@ function showPract(event, practitioner){
     // console.log(event.target.dataset.id);
     document.querySelector("#main").innerHTML = ""
     
-    fetch(`${url}/${event.target.dataset.id}`)
-    .then(res => res.json())
-    .then(renderP)
+    let card = document.createElement('div')
+    card.className = "ui centered card"
 
-    // console.log(event.target.dataset);
+    let name = document.createElement('div')
+    name.className = "centered"
+    name.innerText = practitioner.name
+
+    let img = document.createElement('img')
+    img.src = practitioner.image
+
+    let allUsers = practitioner.user_practitioners
+
+    function likesCounter(totalLikes, pract) {
+        return totalLikes + pract.likes;
+    }
+
+    let likesDiv = document.createElement('div')
+    likesDiv.className = "content"
+    let upLikes = document.createElement('span')
+    upLikes.className = "right floated"
+    let heart = document.createElement('i')
+    heart.className = "heart outline like icon"
+    heart.textContent = allUsers.reduce(likesCounter, 0)
 
     
-
     let reviewSegment = document.createElement('div')
     reviewSegment.className = "ui secondary segment"
     reviewSegment.innerText = "Reviews: "
     
     let reviewDiv = document.createElement('ul')
-    let array = practitioner.user_practitioners.map(function(up) {
+    let array = practitioner.user_practitioners.map(function(userReview) {
         
-        return up.reviews}).forEach(review => { 
+        return userReview.reviews}).forEach(review => { 
             reviewDiv.innerHTML += `<li>${review}</li>`
         })
 
@@ -118,6 +142,7 @@ function showPract(event, practitioner){
     
     let segment = document.createElement('div')
     segment.className = "ui raised segment"
+    // segment.style.width = "650px"
     let about = document.createElement('p')
     about.innerText = practitioner.about
     let specialtiesTitle = document.createElement('ul')
@@ -129,7 +154,10 @@ function showPract(event, practitioner){
     languages.innerText = `Languages Spoken: ${practitioner.languages}`
     let zipCode = document.createElement('p')
     zipCode.innerText = `Zip Code: ${practitioner.zip_code}`
-        
+
+    heart.addEventListener("click", () => {
+        incrementLikes(event, heart)
+    })
     
     
     placeHolder.append(inputForm)
@@ -139,21 +167,41 @@ function showPract(event, practitioner){
     
     specialtiesTitle.append(specialties)
     segment.append(about, specialtiesTitle, languages, zipCode)
-    main.append(segment, reviewSegment)
+
+    upLikes.append(heart)
+    likesDiv.append(upLikes)
+    card.append(name, img, likesDiv)
+
+
+    main.append(card, segment, reviewSegment)
 
     commentsForm.addEventListener("submit", function(event){
         event.preventDefault();
-        postReview(event, commentsForm, reviewDiv)
+        postReview(event, commentsForm, reviewDiv, heart)
     })
 
 
 
 }
 
-function postReview(event, commentsForm, reviewDiv){
+function incrementLikes(event, heart) {
+    //let plus = +event.target.textContent + 1
+    //heart.textContent = plus
+    let addLike = +heart.textContent + 1
+    let newHeartLikes = heart.textContent = addLike
+
+    
+
+
+}
+
+
+
+function postReview(event, commentsForm, reviewDiv, heart){
     event.preventDefault();
     let practitionerId = commentsForm.id
 
+    let newLikes = heart.innerText
 
     let userId = document.getElementById("userDiv")
     
@@ -170,7 +218,7 @@ function postReview(event, commentsForm, reviewDiv){
         user_id: +userId.dataset.userId,
         practitioner_id: +practitionerId,
         reviews: newReviewText,
-        likes: 0
+        likes: +newLikes
     }
 
     console.log();
