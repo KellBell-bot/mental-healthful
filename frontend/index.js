@@ -65,7 +65,7 @@ function renderP(practitioner){
                 </div>
             `
         
-    card.querySelector(".header").addEventListener("click", () => {
+    card.querySelector(".header").addEventListener("click", (event) => {
        showPract(event, practitioner)})
 
    

@@ -26,7 +26,7 @@ function loginForm(){
     let loginBtn= document.querySelector('#loginBtn')
 
     loginBtn.addEventListener('click', () => {
-        let formSection= document.querySelector('form')
+        let formSection= document.querySelector('.form')
        
          
         formSection.innerHTML=  
@@ -39,56 +39,56 @@ function loginForm(){
 
 }
 
-function createLogin(event, ){
+function createLogin(event){
     event.preventDefault()
 
     let userInfo= {
-        email: event.target.email.value
-    }
-    //comapre email.value to all users using User.find
-    //
-
-    fetch('http://localhost:3000/login', {
-        
-            method: "POST",
-            headers:{
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            
-            body: JSON.stringify(userInfo)
-        }).then(response => response.json())
-        .then(data => data)
-        document.querySelector('form').innerHTML= ""  
-}
-
-
-
-function createUser(event) {
-    event.preventDefault()
-    let name = event.target.name.value
-    document.getElementById("userDiv").innerText = name
-    let user = document.getElementById("userDiv")
-    // userId.dataset
-    let newUser= {
-        name: name,
-        email: event.target.email.value
+        email: event.target.email
     }
     
-    fetch(userURL, {
+    
+    fetch('http://localhost:3000/login', {
+        
         method: "POST",
         headers:{
             "Content-Type": "application/json",
             "Accept": "application/json"
         },
         
-        body: JSON.stringify(newUser)
+        body: JSON.stringify(userInfo)
     }).then(response => response.json())
-    .then(data => { 
-        data,
-        user.dataset.userId = data.id
-        
-    })
+    .then(data => data)
+    document.querySelector('form').innerHTML= ""  
+    console.log("you're user email is"+ `${userInfo.email}`)
+    }
     
-    document.querySelector('form').innerHTML= ""
-}
+    
+    
+    function createUser(event) {
+        event.preventDefault()
+        let name = event.target.name.value
+        document.getElementById("userDiv").innerText = `Hi ${name}!`
+        let user = document.getElementById("userDiv")
+        // userId.dataset
+        let newUser= {
+            name: name,
+            email: event.target.email.value
+        }
+        
+        fetch(userURL, {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            
+            body: JSON.stringify(newUser)
+        }).then(response => response.json())
+        .then(data => { 
+            data,
+            user.dataset.userId = data.id
+            
+        })
+        
+        document.querySelector('form').innerHTML= ""
+    }
