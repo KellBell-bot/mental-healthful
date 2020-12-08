@@ -202,7 +202,7 @@ function postReview(event, commentsForm, reviewDiv, heart){
     event.preventDefault();
     let practitionerId = commentsForm.id
 
-    let newLikes = heart.innerText
+    let newLikes = heart.innerText 
 
     let userId = document.getElementById("userDiv")
     

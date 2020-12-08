@@ -14,7 +14,7 @@ main {
     grid-template-columns: 1fr auto;
     grid-template-rows: auto;
     grid-gap: 20px;
-    padding: 50px 100px 50px 100px;
+    padding: 125px 100px 50px 100px;
    
 }
 
@@ -60,9 +60,14 @@ main {
 #reviewList{
     color: rgb(83, 38, 24);
 }
+#navSection {
+    position: fixed;
+    width: 100%;
+}
 
 
 .navbar {
+    
     font-size: 1.15rem;
     font-weight: 600;
     color: rgb(83, 38, 24);

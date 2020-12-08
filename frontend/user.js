@@ -82,6 +82,7 @@ function renderForm(event){
         event.preventDefault()
         let name = event.target.name.value
         document.getElementById("userDiv").innerText = `Hi ${name}!`
+        
         let user = document.getElementById("userDiv")
         // userId.dataset
         let newUser= {
