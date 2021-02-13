@@ -1,86 +1,87 @@
 body {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background-image: url('https://i.imgur.com/rkwgCqf.jpg');
-    background-repeat: repeat-y;
-    background-size: cover;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-image: url("https://i.imgur.com/rkwgCqf.jpg");
+  background-repeat: repeat-y;
+  background-size: cover;
 }
-
 
 main {
-    display: grid;
-    position: relative;
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto;
-    grid-gap: 20px;
-    padding: 50px 100px 50px 100px;
-   
+  display: grid;
+  position: relative;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  padding: 125px 100px 50px 100px;
 }
 
-.welcome{
-    text-align: center;
-    font-family: 'Sansita Swashed', cursive;
-    font-size: 35px;
-    color: rgb(83, 38, 24);
+.welcome {
+  text-align: center;
+  font-family: "Sansita Swashed", cursive;
+  font-size: 35px;
+  color: rgb(83, 38, 24);
 }
 
-.userName{
+.userName {
   text-align: left;
-  font-family: 'Sansita Swashed', bold;
+  font-family: "Sansita Swashed", bold;
   padding-right: 1em;
-
 }
-.title{
-    font-size: 45px;
-    text-align: center;
-    color: rgb(83, 38, 24);
-    font-family: 'Sansita Swashed', cursive;
-      
+.title {
+  font-size: 45px;
+  text-align: center;
+  color: rgb(83, 38, 24);
+  font-family: "Sansita Swashed", cursive;
 }
 
-
-#cardName{ 
-    color: rgb(83, 38, 24);
+#cardName {
+  color: rgb(83, 38, 24);
 }
 
-#nameText{
-    color: rgb(83, 38, 24);
-    font-size: 20px;
+#nameText {
+  color: rgb(83, 38, 24);
+  font-size: 20px;
 }
 
-#segmentText{
-    color: rgb(83, 38, 24);
+#segmentText {
+  color: rgb(83, 38, 24);
 }
 
-#reviewText{
-    color: rgb(83, 38, 24);
+#reviewText {
+  color: rgb(83, 38, 24);
 }
 
-#reviewList{
-    color: rgb(83, 38, 24);
+#reviewList {
+  color: rgb(83, 38, 24);
 }
-
+#navSection {
+  position: fixed;
+  width: 100%;
+}
 
 .navbar {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: rgb(83, 38, 24);
-    letter-spacing: .1rem;
-    box-shadow: 0 .5rem .5rem rgba(0, 0, 0, .2);
-    z-index: 1;
-    
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: rgb(83, 38, 24);
+  letter-spacing: 0.1rem;
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+  z-index: 1;
 }
-
 
 .nav-item {
-    padding: .5rem;
+  padding: 0.5rem;
 }
 
-.nav-link{
-      color: #5b5555!important;
+.nav-link {
+  color: #5b5555 !important;
 }
 
-.nav-link.active, .nav-link:hover{
-    color:  #4981b3!important;
+.nav-link.active,
+.nav-link:hover {
+  color: #4981b3 !important;
+}
+
+#sign-up {
+  color: blue;
 }
